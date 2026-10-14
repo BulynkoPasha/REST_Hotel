@@ -19,4 +19,5 @@ spring:
       ddl-auto: validate
     open-in-view: false
   liquibase:
+    contexts: demo
     change-log: classpath:db/db.changelog-master.yaml

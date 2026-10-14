@@ -1,3 +1,5 @@
 databaseChangeLog:
   - include:
       file: db/001-create-schema.yaml
+  - include:
+      file: db/002-seed-demo-data.yaml

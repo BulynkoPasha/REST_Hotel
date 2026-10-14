@@ -1,0 +1,70 @@
+databaseChangeLog:
+  - changeSet:
+      id: 004-seed-demo-hotels
+      author: dev
+      context: demo
+      changes:
+        - insert:
+            tableName: hotels
+            columns:
+              - column: { name: name, value: "DoubleTree by Hilton Minsk" }
+              - column: { name: description, value: "Luxurious rooms in the Belarusian capital with views of Minsk." }
+              - column: { name: brand, value: "Hilton" }
+              - column: { name: house_number, value: "9" }
+              - column: { name: street, value: "Pobediteley Avenue" }
+              - column: { name: city, value: "Minsk" }
+              - column: { name: country, value: "Belarus" }
+              - column: { name: post_code, value: "220004" }
+              - column: { name: phone, value: "+375 17 309-80-00" }
+              - column: { name: email, value: "doubletreeminsk.info@hilton.com" }
+              - column: { name: check_in, value: "14:00:00" }
+              - column: { name: check_out, value: "12:00:00" }
+        - insert:
+            tableName: hotels
+            columns:
+              - column: { name: name, value: "Hilton Garden Inn Moscow" }
+              - column: { name: description, value: "Modern hotel in the center of Moscow." }
+              - column: { name: brand, value: "Hilton" }
+              - column: { name: house_number, value: "12" }
+              - column: { name: street, value: "Tverskaya Street" }
+              - column: { name: city, value: "Moscow" }
+              - column: { name: country, value: "Russia" }
+              - column: { name: post_code, value: "125009" }
+              - column: { name: phone, value: "+7 495 123-45-67" }
+              - column: { name: email, value: "moscow@hilton.com" }
+              - column: { name: check_in, value: "15:00:00" }
+              - column: { name: check_out, value: "11:00:00" }
+        - insert:
+            tableName: hotels
+            columns:
+              - column: { name: name, value: "Mogilev Central Hotel" }
+              - column: { name: brand, value: "Local" }
+              - column: { name: house_number, value: "3A" }
+              - column: { name: street, value: "Leninskaya Street" }
+              - column: { name: city, value: "Mogilev" }
+              - column: { name: country, value: "Belarus" }
+              - column: { name: post_code, value: "212030" }
+              - column: { name: phone, value: "+375 222 12-34-56" }
+              - column: { name: email, value: "info@mogilev-central.by" }
+              - column: { name: check_in, value: "13:00:00" }
+
+        - insert:
+            tableName: amenities
+            columns:
+              - column: { name: name, value: "Free WiFi" }
+        - insert:
+            tableName: amenities
+            columns:
+              - column: { name: name, value: "Free parking" }
+        - insert:
+            tableName: amenities
+            columns:
+              - column: { name: name, value: "Fitness center" }
+
+        - sql:
+            sql: >
+              INSERT INTO hotel_amenities (hotel_id, amenity_id)
+              SELECT h.id, a.id FROM hotels h, amenities a
+              WHERE (h.name = 'DoubleTree by Hilton Minsk' AND a.name IN ('Free WiFi', 'Free parking', 'Fitness center'))
+                 OR (h.name = 'Hilton Garden Inn Moscow' AND a.name IN ('Free WiFi', 'Fitness center'))
+                 OR (h.name = 'Mogilev Central Hotel' AND a.name = 'Free WiFi')
