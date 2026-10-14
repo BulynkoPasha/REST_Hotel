@@ -32,7 +32,7 @@ mvn spring-boot:run
 ## Демо-данные
 
 При старте Liquibase может загрузить 3 тестовых отеля (Minsk, Moscow, Mogilev) с удобствами.
-Они лежат в `db/changelog/changes/002-seed-demo-data.yaml` и помечены контекстом `demo`.
+Они лежат в `db/002-seed-demo-data.yaml` и помечены контекстом `demo`.
 
 В `application.yml` сейчас стоит:
 
