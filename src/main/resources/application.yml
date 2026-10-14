@@ -1,0 +1,23 @@
+server:
+  port: 8092
+  servlet:
+    context-path: /property-view
+
+spring:
+  application:
+    name: property-view
+  datasource:
+    url: jdbc:h2:mem:hotels;DB_CLOSE_DELAY=-1;MODE=PostgreSQL
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  h2:
+    console:
+      enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  liquibase:
+    contexts: demo
+    change-log: classpath:db/db.changelog-master.yaml
