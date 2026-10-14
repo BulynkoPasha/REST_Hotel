@@ -3,16 +3,11 @@ package org.example.propertyview.repository.specification;
 import jakarta.persistence.criteria.Join;
 import jakarta.persistence.criteria.Root;
 import jakarta.persistence.criteria.Subquery;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.example.propertyview.entity.Amenity;
 import org.example.propertyview.entity.Hotel;
 import org.springframework.data.jpa.domain.Specification;
 
-@NoArgsConstructor
-@RequiredArgsConstructor
 public final class HotelSpecifications {
-
 
     public static Specification<Hotel> nameContains(String name) {
         return (root, query, cb) ->
